@@ -10,6 +10,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Terminal } from 'lucide-react';
+import { AnimatedClothes } from '@/components/animated-clothes';
 
 export default function Home() {
   const [showForm, setShowForm] = useState(false);
@@ -50,17 +51,20 @@ export default function Home() {
     <div className="container mx-auto px-4 py-8 md:py-12">
       <div className="mx-auto max-w-3xl text-center">
         {(!showForm && !results && !isLoading) && (
-          <div className="flex flex-col items-center justify-center py-20 text-center">
-            <h1 className="font-headline text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-              Discover Your Perfect Style
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-gray-600">
-              Answer a few questions about your features and preferences, and let our AI stylist create personalized outfits just for you.
-            </p>
-            <Button size="lg" className="mt-10" onClick={() => setShowForm(true)}>
-              Get Started
-            </Button>
-          </div>
+          <>
+            <AnimatedClothes />
+            <div className="flex flex-col items-center justify-center py-20 text-center">
+              <h1 className="font-headline text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+                Discover Your Perfect Style
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-gray-600">
+                Answer a few questions about your features and preferences, and let our AI stylist create personalized outfits just for you.
+              </p>
+              <Button size="lg" className="mt-10" onClick={() => setShowForm(true)}>
+                Get Started
+              </Button>
+            </div>
+          </>
         )}
       </div>
 
