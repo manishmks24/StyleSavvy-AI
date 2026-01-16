@@ -11,6 +11,7 @@ import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const GenerateStyleGuideExplanationsInputSchema = z.object({
+  gender: z.string().describe("The user's gender (e.g., male, female)."),
   bodyType: z.string().describe('The user\'s body type (e.g., hourglass, apple, pear).'),
   skinTone: z.string().describe('The user\'s skin tone (e.g., fair, medium, olive, dark).'),
   preferredStyles: z.string().describe('The user\'s preferred styles (e.g., casual, formal, bohemian).'),
@@ -43,6 +44,7 @@ const prompt = ai.definePrompt({
   output: {schema: GenerateStyleGuideExplanationsOutputSchema},
   prompt: `You are a personal stylist expert. Generate a style guide explanation for the following outfit recommendation based on the user's body type, skin tone, and preferred styles.
 
+User Gender: {{{gender}}}
 User Body Type: {{{bodyType}}}
 User Skin Tone: {{{skinTone}}}
 User Preferred Styles: {{{preferredStyles}}}

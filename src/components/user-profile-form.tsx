@@ -17,10 +17,13 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { PersonStanding, Palette, Sparkles, Sun, Cloud, Building2, PartyPopper } from 'lucide-react';
+import { PersonStanding, Palette, Sparkles, Sun, PartyPopper, Users2 } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 
 const formSchema = z.object({
+  gender: z.string({
+    required_error: 'Please select your gender.',
+  }),
   bodyType: z.string({
     required_error: 'Please select your body type.',
   }),
@@ -35,6 +38,11 @@ const formSchema = z.object({
 });
 
 export type UserProfileFormData = z.infer<typeof formSchema>;
+
+const genders = [
+  { id: 'female', label: 'Female' },
+  { id: 'male', label: 'Male' },
+];
 
 const bodyTypes = [
   { id: 'apple', label: 'Apple' },
@@ -84,6 +92,35 @@ export function UserProfileForm({ onSubmit, isLoading }: UserProfileFormProps) {
         <Separator />
         <FormField
           control={form.control}
+          name="gender"
+          render={({ field }) => (
+            <FormItem className="space-y-3">
+              <FormLabel className="text-lg font-semibold flex items-center"><Users2 className="mr-2 h-5 w-5 text-primary" /> Gender</FormLabel>
+              <FormControl>
+                <RadioGroup
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                  className="grid grid-cols-2 sm:grid-cols-3 gap-4"
+                >
+                  {genders.map((gender) => (
+                    <div key={gender.id}>
+                      <RadioGroupItem value={gender.id} id={`gender-${gender.id}`} className="peer sr-only" />
+                      <Label
+                        htmlFor={`gender-${gender.id}`}
+                        className="cursor-pointer flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary"
+                      >
+                        {gender.label}
+                      </Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="bodyType"
           render={({ field }) => (
             <FormItem className="space-y-3">
@@ -95,13 +132,15 @@ export function UserProfileForm({ onSubmit, isLoading }: UserProfileFormProps) {
                   className="grid grid-cols-2 sm:grid-cols-3 gap-4"
                 >
                   {bodyTypes.map((type) => (
-                    <Label
-                      key={type.id}
-                      className="cursor-pointer flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary"
-                    >
-                      <RadioGroupItem value={type.id} className="sr-only" />
-                      {type.label}
-                    </Label>
+                    <div key={type.id}>
+                      <RadioGroupItem value={type.id} id={`bodyType-${type.id}`} className="peer sr-only" />
+                      <Label
+                        htmlFor={`bodyType-${type.id}`}
+                        className="cursor-pointer flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary"
+                      >
+                        {type.label}
+                      </Label>
+                    </div>
                   ))}
                 </RadioGroup>
               </FormControl>
@@ -122,13 +161,15 @@ export function UserProfileForm({ onSubmit, isLoading }: UserProfileFormProps) {
                   className="grid grid-cols-2 sm:grid-cols-3 gap-4"
                 >
                   {skinTones.map((tone) => (
-                    <Label
-                      key={tone.id}
-                      className="cursor-pointer flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary"
-                    >
-                      <RadioGroupItem value={tone.id} className="sr-only" />
-                      {tone.label}
-                    </Label>
+                     <div key={tone.id}>
+                      <RadioGroupItem value={tone.id} id={`skinTone-${tone.id}`} className="peer sr-only" />
+                      <Label
+                        htmlFor={`skinTone-${tone.id}`}
+                        className="cursor-pointer flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary"
+                      >
+                        {tone.label}
+                      </Label>
+                    </div>
                   ))}
                 </RadioGroup>
               </FormControl>

@@ -12,6 +12,7 @@ import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const GenerateOutfitRecommendationsInputSchema = z.object({
+  gender: z.string().describe("The user's gender (e.g., male, female)."),
   bodyType: z.string().describe('The user\'s body type (e.g., pear-shaped, apple-shaped, hourglass).'),
   skinTone: z.string().describe('The user\'s skin tone (e.g., fair, light, medium, dark).'),
   preferredStyles: z.array(z.string()).describe('The user\'s preferred clothing styles (e.g., casual, formal, bohemian).'),
@@ -38,6 +39,7 @@ const prompt = ai.definePrompt({
 
 Here is the user's profile data:
 
+Gender: {{{gender}}}
 Body Type: {{{bodyType}}}
 Skin Tone: {{{skinTone}}}
 Preferred Styles: {{#each preferredStyles}}{{{this}}}{{#unless @last}}, {{/unless}}{{/each}}
