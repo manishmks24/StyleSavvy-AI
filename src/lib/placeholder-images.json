@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "outfit-1",
+      "description": "A stylish woman in a casual chic outfit, featuring a white blazer, blue jeans, and accessories.",
+      "imageUrl": "https://images.unsplash.com/photo-1704775988639-e9fe3b7d94fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjYXN1YWwlMjBjaGljfGVufDB8fHx8MTc2ODU1MDMyNXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "casual chic"
+    },
+    {
+      "id": "outfit-2",
+      "description": "A person wearing a formal business suit, looking sharp and professional.",
+      "imageUrl": "https://images.unsplash.com/photo-1765614765969-0668a34b8998?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxmb3JtYWwlMjBzdWl0fGVufDB8fHx8MTc2ODU0Nzg5OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "formal suit"
+    },
+    {
+      "id": "outfit-3",
+      "description": "A vibrant bohemian style outfit with a flowy dress and layered necklaces.",
+      "imageUrl": "https://images.unsplash.com/photo-1654611265344-dc28f5e4b798?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxib2hlbWlhbiUyMGRyZXNzfGVufDB8fHx8MTc2ODU1MjYxMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "bohemian dress"
+    },
+    {
+      "id": "outfit-4",
+      "description": "A modern streetwear look with a graphic hoodie, cargo pants, and sneakers.",
+      "imageUrl": "https://images.unsplash.com/photo-1670105084645-d4e3c9800776?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzdHJlZXR3ZWFyJTIwbG9va3xlbnwwfHx8fDE3Njg1NTI2MTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "streetwear look"
+    },
+    {
+      "id": "outfit-5",
+      "description": "A classic minimalist outfit featuring neutral tones and clean lines.",
+      "imageUrl": "https://images.unsplash.com/photo-1737438696465-516c17c5e0f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtaW5pbWFsaXN0JTIwb3V0Zml0fGVufDB8fHx8MTc2ODU1MjYxMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "minimalist outfit"
+    },
+    {
+      "id": "outfit-6",
+      "description": "An elegant evening gown perfect for a special occasion.",
+      "imageUrl": "https://images.unsplash.com/photo-1717342586432-3fb4c5bd39c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxldmVuaW5nJTIwZ293bnxlbnwwfHx8fDE3Njg1NTI2MTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "evening gown"
+    }
+  ]
 }
