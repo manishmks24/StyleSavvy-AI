@@ -95,14 +95,13 @@ export function UserProfileForm({ onSubmit, isLoading }: UserProfileFormProps) {
                   className="grid grid-cols-2 sm:grid-cols-3 gap-4"
                 >
                   {bodyTypes.map((type) => (
-                    <FormItem key={type.id}>
-                      <FormControl>
-                        <RadioGroupItem value={type.id} id={`bodyType-${type.id}`} className="sr-only" />
-                      </FormControl>
-                      <Label htmlFor={`bodyType-${type.id}`} className="flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary">
-                        {type.label}
-                      </Label>
-                    </FormItem>
+                    <Label
+                      key={type.id}
+                      className="cursor-pointer flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary"
+                    >
+                      <RadioGroupItem value={type.id} className="sr-only" />
+                      {type.label}
+                    </Label>
                   ))}
                 </RadioGroup>
               </FormControl>
@@ -123,14 +122,13 @@ export function UserProfileForm({ onSubmit, isLoading }: UserProfileFormProps) {
                   className="grid grid-cols-2 sm:grid-cols-3 gap-4"
                 >
                   {skinTones.map((tone) => (
-                    <FormItem key={tone.id}>
-                       <FormControl>
-                        <RadioGroupItem value={tone.id} id={`skinTone-${tone.id}`} className="sr-only" />
-                      </FormControl>
-                      <Label htmlFor={`skinTone-${tone.id}`} className="flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary">
-                        {tone.label}
-                      </Label>
-                    </FormItem>
+                    <Label
+                      key={tone.id}
+                      className="cursor-pointer flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary"
+                    >
+                      <RadioGroupItem value={tone.id} className="sr-only" />
+                      {tone.label}
+                    </Label>
                   ))}
                 </RadioGroup>
               </FormControl>
