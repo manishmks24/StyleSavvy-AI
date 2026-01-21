@@ -1,0 +1,6 @@
+kagglehub
+pandas
+scikit-learn
+numpy
+flask
+flask-cors
