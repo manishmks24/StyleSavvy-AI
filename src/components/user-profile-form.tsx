@@ -17,7 +17,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { PersonStanding, Palette, Sparkles, Sun, PartyPopper, Users2 } from 'lucide-react';
+import { PersonStanding, Palette, Sparkles, Sun, PartyPopper, Users2, Hourglass, RectangleHorizontal, Triangle } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 
 const formSchema = z.object({
@@ -44,13 +44,30 @@ const genders = [
   { id: 'male', label: 'Male' },
 ];
 
+// Custom Icons for Body Types
+const AppleIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 20.94c1.5 0 2.75-1.12 2.75-2.5S13.5 15.94 12 15.94s-2.75 1.12-2.75 2.5 1.25 2.5 2.75 2.5z" />
+        <path d="M12 15.94c-4.42 0-8-3.58-8-8a8 8 0 0 1 16 0c0 4.42-3.58 8-8 8" />
+        <path d="M12 7.94c0-1.66-1.34-3-3-3" />
+    </svg>
+);
+
+const PearIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 22a5 5 0 0 1-5-5c0-5 5-9 5-9s5 4 5 9a5 5 0 0 1-5 5z" />
+    <path d="M12 8V2l2 2" />
+  </svg>
+);
+
 const bodyTypes = [
-  { id: 'apple', label: 'Apple' },
-  { id: 'pear', label: 'Pear' },
-  { id: 'hourglass', label: 'Hourglass' },
-  { id: 'rectangle', label: 'Rectangle' },
-  { id: 'inverted-triangle', label: 'Inverted Triangle' },
+  { id: 'apple', label: 'Apple', icon: AppleIcon },
+  { id: 'pear', label: 'Pear', icon: PearIcon },
+  { id: 'hourglass', label: 'Hourglass', icon: Hourglass },
+  { id: 'rectangle', label: 'Rectangle', icon: RectangleHorizontal },
+  { id: 'inverted-triangle', label: 'Inverted Triangle', icon: Triangle },
 ];
+
 
 const skinTones = [
   { id: 'fair', label: 'Fair', color: '#FEE3D4' },
@@ -131,17 +148,21 @@ export function UserProfileForm({ onSubmit, isLoading }: UserProfileFormProps) {
                   defaultValue={field.value}
                   className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4"
                 >
-                  {bodyTypes.map((type) => (
-                    <div key={type.id}>
-                      <RadioGroupItem value={type.id} id={`bodyType-${type.id}`} className="peer sr-only" />
-                      <Label
-                        htmlFor={`bodyType-${type.id}`}
-                        className="cursor-pointer flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary"
-                      >
-                        {type.label}
-                      </Label>
-                    </div>
-                  ))}
+                  {bodyTypes.map((type) => {
+                    const Icon = type.icon;
+                    return (
+                        <div key={type.id}>
+                          <RadioGroupItem value={type.id} id={`bodyType-${type.id}`} className="peer sr-only" />
+                          <Label
+                            htmlFor={`bodyType-${type.id}`}
+                            className="cursor-pointer flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary h-full"
+                          >
+                            <Icon className={`h-8 w-8 mb-2 ${type.id === 'inverted-triangle' ? 'rotate-180' : ''}`} />
+                            {type.label}
+                          </Label>
+                        </div>
+                    );
+                  })}
                 </RadioGroup>
               </FormControl>
               <FormMessage />
