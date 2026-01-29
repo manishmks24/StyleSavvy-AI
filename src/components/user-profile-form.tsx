@@ -53,11 +53,11 @@ const bodyTypes = [
 ];
 
 const skinTones = [
-  { id: 'fair', label: 'Fair' },
-  { id: 'light', label: 'Light' },
-  { id: 'medium', label: 'Medium' },
-  { id: 'tan', label: 'Tan' },
-  { id: 'dark', label: 'Dark' },
+  { id: 'fair', label: 'Fair', color: '#FEE3D4' },
+  { id: 'light', label: 'Light', color: '#F2CCB7' },
+  { id: 'medium', label: 'Medium', color: '#E5B5A1' },
+  { id: 'tan', label: 'Tan', color: '#DFAA8B' },
+  { id: 'dark', label: 'Dark', color: '#D19477' },
 ];
 
 const styles = [
@@ -129,7 +129,7 @@ export function UserProfileForm({ onSubmit, isLoading }: UserProfileFormProps) {
                 <RadioGroup
                   onValueChange={field.onChange}
                   defaultValue={field.value}
-                  className="grid grid-cols-2 sm:grid-cols-3 gap-4"
+                  className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4"
                 >
                   {bodyTypes.map((type) => (
                     <div key={type.id}>
@@ -158,16 +158,17 @@ export function UserProfileForm({ onSubmit, isLoading }: UserProfileFormProps) {
                 <RadioGroup
                   onValueChange={field.onChange}
                   defaultValue={field.value}
-                  className="grid grid-cols-2 sm:grid-cols-3 gap-4"
+                  className="grid grid-cols-3 md:grid-cols-5 gap-2"
                 >
                   {skinTones.map((tone) => (
                      <div key={tone.id}>
                       <RadioGroupItem value={tone.id} id={`skinTone-${tone.id}`} className="peer sr-only" />
                       <Label
                         htmlFor={`skinTone-${tone.id}`}
-                        className="cursor-pointer flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary"
+                        className="cursor-pointer flex h-full flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 text-center hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary"
                       >
-                        {tone.label}
+                        <div className="mb-2 h-10 w-10 rounded-full border" style={{ backgroundColor: tone.color }}></div>
+                        <span className="text-sm">{tone.label}</span>
                       </Label>
                     </div>
                   ))}
