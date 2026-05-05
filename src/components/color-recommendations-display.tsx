@@ -18,14 +18,16 @@ export function ColorRecommendationsDisplay({
     const [recommendations, setRecommendations] = useState<ColorRecommendations | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [serviceAvailable, setServiceAvailable] = useState(false);
+    const [modelLoaded, setModelLoaded] = useState(false);
 
     useEffect(() => {
         async function fetchRecommendations() {
             setIsLoading(true);
 
             // Check if service is available
-            const isHealthy = await checkServiceHealth();
-            setServiceAvailable(isHealthy);
+            const health = await checkServiceHealth();
+            setServiceAvailable(health.healthy);
+            setModelLoaded(health.modelLoaded);
 
             // Get recommendations
             const recs = await getColorRecommendations({ skinTone });
@@ -70,7 +72,7 @@ export function ColorRecommendationsDisplay({
                     Personalized Color Palette
                 </CardTitle>
                 <CardDescription>
-                    {serviceAvailable ? (
+                    {serviceAvailable && modelLoaded ? (
                         <span className="flex items-center gap-1 text-green-600">
                             <CheckCircle2 className="h-4 w-4" />
                             Data-driven recommendations from KNN analysis

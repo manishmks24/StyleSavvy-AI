@@ -132,7 +132,7 @@ def get_color_recommendations():
 def get_dataset_info():
     """Get information about the loaded dataset"""
     try:
-        if not data_loader.df is not None:
+        if data_loader.df is None:
             data_loader.load_dataset()
         
         info = data_loader.get_dataset_info()

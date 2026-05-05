@@ -17,6 +17,11 @@ export interface ColorRecommendations {
     skin_tone: string;
 }
 
+export interface ServiceHealth {
+    healthy: boolean;
+    modelLoaded: boolean;
+}
+
 export interface OutfitColorPrediction {
     skin_tone: number[];
     shirt_neighbors?: number[];
@@ -38,20 +43,23 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_COLOR_API_URL || 'http://localhost:
 /**
  * Check if the color matching service is available
  */
-export async function checkServiceHealth(): Promise<boolean> {
+export async function checkServiceHealth(): Promise<ServiceHealth> {
     try {
         const response = await fetch(`${API_BASE_URL}/health`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
         });
 
-        if (!response.ok) return false;
+        if (!response.ok) return { healthy: false, modelLoaded: false };
 
         const data = await response.json();
-        return data.status === 'healthy';
+        return {
+            healthy: data.status === 'healthy',
+            modelLoaded: Boolean(data.model_loaded),
+        };
     } catch (error) {
         console.error('Color service health check failed:', error);
-        return false;
+        return { healthy: false, modelLoaded: false };
     }
 }
 

@@ -99,9 +99,9 @@ const generateOutfitRecommendationsFlow = ai.defineFlow(
 
     try {
       // Check if service is available
-      const isHealthy = await checkServiceHealth();
+      const health = await checkServiceHealth();
 
-      if (isHealthy) {
+      if (health.healthy) {
         // Get color recommendations
         colorRecs = await getColorRecommendations({
           skinTone: input.skinTone,

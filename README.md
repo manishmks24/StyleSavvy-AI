@@ -163,6 +163,16 @@ python quickstart.py # Interactive setup
 
 ## 🎨 Using the Color API
 
+### Environment
+
+Create `.env.local` (frontend) if you want to point to a non-default backend:
+
+```
+NEXT_PUBLIC_COLOR_API_URL=http://localhost:5000
+```
+
+Defaults to `http://localhost:5000` when unset.
+
 ### In TypeScript/React:
 ```typescript
 import { getColorRecommendations } from '@/lib/color-api';
